@@ -13,7 +13,11 @@ class Person
   attr_accessor :shoes
   attr_accessor :first_name
   attr_accessor :last_name
-  # TODO 1. Add more!
+  attr_accessor :age
+  attr_accessor :email
+  attr_accessor :github
+  attr_accessor :twitter
+  attr_accessor :fun_fact
 
   def initialize(shoes)
     self.shoes = shoes
@@ -54,6 +58,31 @@ class Person
     shoes.flow do
       shoes.caption "Last name"
       @last_name_field = shoes.edit_line
+    end
+
+    shoes.flow do
+      shoes.caption "Age"
+      @age = shoes.edit_line
+    end
+
+    shoes.flow do
+      shoes.caption "Email"
+      @email = shoes.edit_line
+    end
+
+    shoes.flow do
+      shoes.caption "github"
+      @github = shoes.edit_line
+    end
+
+    shoes.flow do
+      shoes.caption "twitter"
+      @twitter = shoes.edit_line
+    end
+
+    shoes.flow do
+      shoes.caption "Fun Fact"
+      @fun_fact = shoes.edit_line
     end
 
     # TODO 4. Add fields for the user to fill in, but only if they are
