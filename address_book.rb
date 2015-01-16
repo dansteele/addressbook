@@ -23,6 +23,18 @@ class Person
     self.shoes = shoes
   end
 
+
+  def self.make_person(type, stack)
+    case type
+    when "Instructor"
+      Instructor.new(stack)
+    when "Trainee"
+      Trainee.new(stack)
+    end
+  end
+
+
+
   # Displays the input form to the user
   #
   def draw
@@ -30,7 +42,7 @@ class Person
     shoes.append do
 
       # Show the questions on the screen
-      # draw_questions
+      draw_questions
 
       shoes.app.button "Save" do
         # Set the values from the boxes into the Object
@@ -50,39 +62,39 @@ class Person
   # Renders some labels and textboxes to prompt the user for input
   
   def draw_questions
-    shoes.flow do
-      shoes.caption "First name"
-      @first_name_field = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "First name"
+      @first_name_field = shoes.app.edit_line
     end
 
-    shoes.flow do
-      shoes.caption "Last name"
-      @last_name_field = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "Last name"
+      @last_name_field = shoes.app.edit_line
     end
 
-    shoes.flow do
-      shoes.caption "Age"
-      @age = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "Age"
+      @age = shoes.app.edit_line
     end
 
-    shoes.flow do
-      shoes.caption "Email"
-      @email = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "Email"
+      @email = shoes.app.edit_line
     end
 
-    shoes.flow do
-      shoes.caption "github"
-      @github = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "github"
+      @github = shoes.app.edit_line
     end
 
-    shoes.flow do
-      shoes.caption "twitter"
-      @twitter = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "twitter"
+      @twitter = shoes.app.edit_line
     end
 
-    shoes.flow do
-      shoes.caption "Fun Fact"
-      @fun_fact = shoes.edit_line
+    shoes.app.flow do
+      shoes.app.caption "Fun Fact"
+      @fun_fact = shoes.app.edit_line
     end
 
     # TODO 4. Add fields for the user to fill in, but only if they are
@@ -132,7 +144,8 @@ Shoes.app title: "Ruby Address Book", width: 520 do
     flow do
       caption "Type"
       list_box :items => %w(Trainee Instructor) do |selected|
-        debug selected.text
+        
+        @person = Person.make_person(selected.text, @form).draw
 
         # TODO 3. Create a Trainee or an Instructor using a Person factory method
         # and store the result in @person. Show the fields for the user to fill in
