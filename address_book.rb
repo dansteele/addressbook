@@ -52,9 +52,9 @@ class Person
         $address_book << self
 
         # TODO: 6. Open a address_book.yml YAML file and write it out to disc
-        shoes.debug self.to_yaml
+        shoes.app.debug self.to_yaml
 
-        shoes.alert 'Saved'
+        shoes.app.alert 'Saved'
       end
     end
   end
@@ -111,12 +111,16 @@ class Person
     self.github = @github.text.strip.chomp
     self.twitter = @twitter.text.strip.chomp
     self.fun_fact = @fun_fact.text.strip.chomp
+    puts self.first_name
+    puts self.last_name
+    puts self.age
+
     # TODO: 2. Finish the implementation to set the other fields.
   end
 
   def to_yaml_properties
     #Add the fields that should be saved to the YAML file
-   %w(@first_name @last_name age @email @github @twitter @fun_fact)
+   %w(@first_name @last_name @age @email @github @twitter @fun_fact)
   end
 end
 
