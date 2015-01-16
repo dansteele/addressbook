@@ -94,13 +94,17 @@ class Person
   def save_values
     self.first_name = @first_name_field.text.strip.chomp
     self.last_name = @last_name_field.text.strip.chomp
-
+    self.age = @age.text.strip.chomp
+    self.email = @email.text.strip.chomp
+    self.github = @github.text.strip.chomp
+    self.twitter = @twitter.text.strip.chomp
+    self.fun_fact = @fun_fact.text.strip.chomp
     # TODO: 2. Finish the implementation to set the other fields.
   end
 
   def to_yaml_properties
     #Add the fields that should be saved to the YAML file
-   %w(@first_name @last_name)
+   %w(@first_name @last_name age @email @github @twitter @fun_fact)
   end
 end
 
